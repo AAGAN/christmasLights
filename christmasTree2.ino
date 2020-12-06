@@ -21,15 +21,15 @@
 
 #define DATA_PIN   2
 #define LED_TYPE    WS2811
-#define COLOR_ORDER GRB
+#define COLOR_ORDER RGB
 #define NUM_LEDS    350       // Change this to reflect the number of LEDs you have
-#define BRIGHTNESS  50      // Set Brightness here
+#define BRIGHTNESS  20      // Set Brightness here
 
 CRGB leds[NUM_LEDS];
 
 // ten seconds per color palette makes a good demo
 // 20-120 is better for deployment
-#define SECONDS_PER_PALETTE 20
+#define SECONDS_PER_PALETTE 30
 
 float redStates[Pixels];
 float blueStates[Pixels];
@@ -664,7 +664,8 @@ const TProgmemRGBGradientPalettePtr gGradientPalettes[] = {
   BlacK_Blue_Magenta_White_gp,
   BlacK_Magenta_Red_gp,
   BlacK_Red_Magenta_Yellow_gp,
-  Blue_Cyan_Yellow_gp };
+  Blue_Cyan_Yellow_gp 
+  };
 
 
 // Count of how many cpt-city gradients are defined:
@@ -672,7 +673,7 @@ const uint8_t gGradientPaletteCount =
   sizeof( gGradientPalettes) / sizeof( TProgmemRGBGradientPalettePtr );
 
 
-uint32_t first = millis();
+//uint32_t first = millis();
   void loop()
 {
 //  if(millis()-first < 680000){
@@ -681,7 +682,7 @@ uint32_t first = millis();
     gTargetPalette = gGradientPalettes[ gCurrentPaletteNumber ];
   }
 
-  EVERY_N_MILLISECONDS(40) {
+  EVERY_N_MILLISECONDS(5) {
     nblendPaletteTowardPalette( gCurrentPalette, gTargetPalette, 16);
   }
   
